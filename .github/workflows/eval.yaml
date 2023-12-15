@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - truthiness
+
+env:
+  T: true
+  F: false
+  B: ""
+  S: "string"
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test false
+        if: env.F != 'false'
+        run: echo "false"
+      - name: test true
+        if: env.S == 'string' && env.T == 'true'
+        run: echo "true"
+      - name: test empty
+        if: ${{ env.B }}
+        run: echo "empty"
