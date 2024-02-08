@@ -1,0 +1,12 @@
+on:
+  push:
+    branches:
+      - tee
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test tee
+        run: echo "SOME_VAR=some_val" | tee -a $GITHUB_ENV
+      - name: test tee 2
+        run: echo "${{ env.SOME_VAR }}"
