@@ -1,0 +1,18 @@
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+      - synchronize
+env:
+  GITHUB_BRANCH: ${{ github.head_ref || github.ref_name }}
+jobs:
+  test-branch-name:
+    runs-on: ubuntu-latest
+    steps:
+      - name: asdf
+        uses: GsActions/commit-message-checker@v2.0.0
+        with:
+          pattern: '.*\n\n[\S\s]*Description[\S\s]+Test Procedure[\S\s]+'
+          error: 'asdf'
