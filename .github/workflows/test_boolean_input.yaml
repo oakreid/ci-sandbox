@@ -5,11 +5,10 @@ on:
     inputs:
       test:
         type: boolean
-        required: false
 
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - name: test
-        run: echo "${{ inputs.test == 'true' && 'test' }}"
+        run: echo "${{ inputs.test && 'test' }}"
