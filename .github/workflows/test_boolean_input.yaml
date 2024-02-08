@@ -1,0 +1,14 @@
+name: Test boolean input
+
+on:
+  workflow_dispatch:
+    inputs:
+      test:
+        type: boolean
+        required: false
+
+jobs:
+  test:
+    steps:
+      - name: test
+        run: echo "${{ inputs.test }}"
